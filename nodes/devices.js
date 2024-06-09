@@ -49,6 +49,10 @@ module.exports = function(RED) {
       var ImportedLightsList = MIIOdevtypesVocabulary.light_list();
       res.json(ImportedLightsList);
     });
+    RED.httpAdmin.get(NODE_PATH + 'getAirconditionList/', function (req, res) {
+      var ImportedAirconditionList = MIIOdevtypesVocabulary.aircondition_list();
+      res.json(ImportedAirconditionList);
+    });
 
     RED.httpAdmin.get(NODE_PATH + 'getCommands/' + node.id, function (req, res) {
       var ModelForCommand = node.model;

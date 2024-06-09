@@ -24,6 +24,7 @@
         <option value="heatfan">Heaters, Fans & Toilets</option>
         <option value="vacuum">Vacuum Cleaners</option>
         <option value="light">Lights</option>
+        <option value="aircondition">aircondition</option>
       </select>
     </div>
 	</div>
@@ -180,6 +181,18 @@
           for (var key in ImportedLightsList) {
             Selector.append(
               `<option value="${ImportedLightsList[key].model}">${ImportedLightsList[key].name}</option>`
+            );
+          };
+          $(`#node-config-input-model option[value="${CurrentModel}"]`).attr('selected', 'selected');
+        });
+        break;
+      }
+      case "aircondition": {
+        $.getJSON('node-red-contrib-miio-localdevices/nodes/getAirconditionList/').done(function (data) {
+          var ImportedAirconditionList = data;
+          for (var key in ImportedAirconditionList) {
+            Selector.append(
+              `<option value="${ImportedAirconditionList[key].model}">${ImportedAirconditionList[key].name}</option>`
             );
           };
           $(`#node-config-input-model option[value="${CurrentModel}"]`).attr('selected', 'selected');
